@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id "org.openapi.generator" version "5.1.1"
+}
+
+version '1.8.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation('org.glassfish.jersey.core:jersey-common:2.25.1')
+    implementation('org.glassfish.jersey.core:jersey-client:2.25.1')
+    implementation('org.glassfish.jersey.media:jersey-media-multipart:2.25.1')
+    implementation('org.glassfish.jersey.media:jersey-media-json-jackson:2.25.1')
+    implementation('com.github.scribejava:scribejava-apis:8.3.1')
+    implementation('com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.9.10')
+    implementation('com.fasterxml.jackson.core:jackson-core:2.9.10')
+    implementation('com.fasterxml.jackson.core:jackson-annotations:2.9.10')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.9.10')
+    implementation('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.9.10')
+    implementation('org.openapitools:jackson-databind-nullable:0.2.0')
+    implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.10')
+    implementation('io.swagger:swagger-annotations:1.6.2')
+    implementation('com.google.code.findbugs:jsr305:3.0.2')
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'build/generated/src']
+        }
+    }
+}
+
+openApiGenerate {
+    generatorName = "java"
+    inputSpec = "$projectDir/src/main/resources/swagger-1.8.2.json".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "net.evetech.esi.client.api"
+    invokerPackage = "net.evetech.esi.client"
+    modelPackage = "net.evetech.esi.client.model"
+    configOptions = [
+            dateLibrary: "java8",
+            java8: "true"
+    ]
+    library = "jersey2"
+    generateModelTests = false
+    generateApiTests = false
+    templateDir = "$projectDir/src/templates".toString()
+}
+
+compileJava.dependsOn tasks.openApiGenerate

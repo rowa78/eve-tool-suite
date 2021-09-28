@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    url: {JDBC_URL}
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          eve:
+            clientId: ${CLIENT_ID:client-id}
+            clientSecret: ${CLIENT_SECRET:client-secret}
+            authorization-grant-type: authorization_code
+            redirect-uri: ${URL}
+            client-authentication-method: basic
+            scope:
+              - esi-characters.read_standings.v1
+              - esi-universe.read_structures.v1
+              - esi-markets.structure_markets.v1
+              - esi-markets.read_character_orders.v1
+              - esi-search.search_structures.v1
+              - esi-assets.read_assets.v1
+              - esi-wallet.read_character_wallet.v1
+              - esi-contracts.read_character_contracts.v1
+              - esi-wallet.read_corporation_wallets.v1
+              - esi-assets.read_corporation_assets.v1
+              - esi-markets.read_corporation_orders.v1
+              - esi-corporations.read_divisions.v1
+              - esi-wallet.read_corporation_wallet.v1
+              - esi-ui.open_window.v1
+        provider:
+          eve:
+            authorization-uri: https://login.eveonline.com/oauth/authorize
+            token-uri: https://login.eveonline.com/oauth/token
+            user-info-uri: https://login.eveonline.com/oauth/verify
+            user-name-attribute: CharacterID
+            user-info-authentication-method: header
+
+logging:
+  level:
+    root: INFO
+    de.ronnywalter: DEBUG
+    org:
+      springframework:
+        security: DEBUG
+
