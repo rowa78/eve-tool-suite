@@ -39,10 +39,10 @@ jib {
         }
     }
     to {
-        image = "docker.ronnywalter.de/eve/${project.name}:${version}"
+        image = "r0wa/${project.name}:${version}"
         auth {
-            username = 'ronny'
-            password = 'umAvfbK4e8rY6q'
+            username = '${env.DOCKER_USERNAME}'
+            password = '${env.DOCKER_PASSWORD}'
         }
     }
 }

@@ -19,3 +19,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
