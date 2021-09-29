@@ -42,7 +42,7 @@ jib {
         image = "r0wa/${project.name}:${version}"
         auth {
             username = '${env.DOCKER_USERNAME}'
-            password = '${env.DOCKER_PASSWORD}'
+            password = '${env.DOCKER_TOKEN}'
         }
     }
 }
