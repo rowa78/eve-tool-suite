@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eve-authservice.iml" filepath="$PROJECT_DIR$/.idea/modules/eve-authservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eve-universeservice.iml" filepath="$PROJECT_DIR$/.idea/modules/eve-universeservice.iml" />
     </modules>
   </component>
 </project>

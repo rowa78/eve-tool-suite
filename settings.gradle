@@ -3,4 +3,5 @@ rootProject.name = 'eve-tool-suite'
 include 'eve-rest-api'
 include 'eve-rest-api'
 include 'eve-authservice'
+include 'eve-universeservice'
 
